@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <title>"Setting the Axis on a MATLAB Plot"</title>
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<!-- Using MathJax, with the delimiters $ -->
+<!-- Conflict with pygments for the .mo and .mi -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">William's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/pages/my-research.html">my research</a></li>
+                    <li><a href="/pages/my-resume.html">my resume</a></li>
+                    <li><a href="/pages/thesis-changes-and-additions.html">Thesis Changes and Additions</a></li>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
+                    <li><a href="/category/pages.html">Pages</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/setting-the-axis-on-a-matlab-plot.html" rel="bookmark"
+           title="Permalink to "Setting the Axis on a MATLAB Plot"">"Setting the Axis on a MATLAB Plot"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-01-19T06:00:00">
+                Thu 19 January 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info -->      <p>I ran into a situation where I was programmatically making a plot and I wanted it to be formatted correctly each time. This saves me effort from having to manually fix aspects of the plot that aren’t set. </p>
+<p>The trouble is, MATLAB doesn’t make this particularly easy. There’s lots of figure handles and such that need to be manipulated. Here’s a code snippet that a) creates a figure b) lets you manually set the axis properties and c) plots data on that axis. </p>
+<div class="highlight"><pre><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c">% Create figure #2. Note this figure does NOT have an axis associated  </span>
+        <span class="c">% with it. If you call &#39;hold on&#39; it WILL create a default axis.</span>
+<span class="n">axes1</span> <span class="p">=</span> <span class="n">axes</span><span class="p">(</span><span class="s">&#39;Parent&#39;</span><span class="p">,</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;YScale&#39;</span><span class="p">,</span><span class="s">&#39;log&#39;</span><span class="p">,</span><span class="s">&#39;YMinorTick&#39;</span><span class="p">,</span><span class="s">&#39;on&#39;</span><span class="p">,</span><span class="c">...</span>
+    <span class="s">&#39;YMinorGrid&#39;</span><span class="p">,</span><span class="s">&#39;on&#39;</span><span class="p">,</span><span class="c">...</span>
+    <span class="s">&#39;YGrid&#39;</span><span class="p">,</span><span class="s">&#39;on&#39;</span><span class="p">,</span><span class="c">...</span>
+    <span class="s">&#39;XGrid&#39;</span><span class="p">,</span><span class="s">&#39;on&#39;</span><span class="p">);</span> <span class="c">% Creates a semilog axis with logarithmic y-axis, etc.</span>
+<span class="n">hold</span><span class="p">(</span><span class="n">axes1</span><span class="p">,</span><span class="s">&#39;all&#39;</span><span class="p">);</span> <span class="c">% Prevents subsequent plots from changing the axis property</span>
+<span class="n">plot</span><span class="p">(</span><span class="c">...,&#39;Parent&#39;,axes1);  % Plot data on this new axis. I don&#39;t think this is strictly </span>
+ <span class="c">% necessary, but can help if you have trouble.</span>
+</pre></div>
+
+
+<p>So, there you go. Don’t forget you can use the following to add title, labels, and set the axis limits:</p>
+<div class="highlight"><pre><span class="n">title</span><span class="p">({</span><span class="s">&#39;Title line 1&#39;</span><span class="p">,</span><span class="s">&#39;Title line 2&#39;</span><span class="p">},</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;X label&#39;</span><span class="p">,</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Y label&#39;</span><span class="p">,</span><span class="s">&#39;FontSize&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span>
+<span class="n">ylim</span><span class="p">([</span><span class="mf">1e-012</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="n">xlim</span><span class="p">([</span><span class="mi">1</span> <span class="mi">10</span><span class="p">]);</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
