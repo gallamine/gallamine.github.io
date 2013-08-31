@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>William's Blog</title><link href="http://gallamine.com/" rel="alternate"></link><link href="http://gallamine.com/feeds/pages.atom.xml" rel="self"></link><id>http://gallamine.com/</id><updated>2013-01-19T06:52:00+01:00</updated><entry><title>Thesis Changes and Additions</title><link href="http://gallamine.com/thesis-changes-and-additions.html" rel="alternate"></link><updated>2013-01-19T06:52:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:thesis-changes-and-additions.html</id><summary type="html">&lt;p&gt;Thesis errata, changes, and updates shown here. The &lt;a href="https://github.com/gallamine/Photonator"&gt;source code for Photonator can be found on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Errata&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The thesis is current perfect.&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>my research</title><link href="http://gallamine.com/my-research.html" rel="alternate"></link><updated>2013-01-19T06:15:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:my-research.html</id><summary type="html">&lt;p&gt;I am working on PhD in Electrical Engineering focusing on underwater freespace optical communication. I shoot lasers through water and try and communicate. Fun stuff.&lt;/p&gt;
+
+&lt;p&gt;Here are a list of my publications:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://repository.lib.ncsu.edu/ir/handle/1840.16/1696"&gt;&amp;ldquo;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode&lt;br /&gt;and Photomultiplier Tube,&amp;rdquo;&lt;/a&gt;&amp;nbsp;M.S. thesis, Dept. of Elec. And Comp. Eng., North Carolina State University, Raleigh, NC, 2007.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href="http://ieeexplore.ieee.org/Xplore/login.jsp?url=http://ieeexplore.ieee.org/iel5/5089336/5151799/05151992.pdf%3Farnumber%3D5151992&amp;amp;authDecision=-203"&gt;An underwater optical communication system implementing Reed-Solomon channel coding,&lt;/a&gt;&amp;rdquo; in Proc. OCEANS Conf. 2008.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href="http://ieeexplore.ieee.org/Xplore/login.jsp?url=http://ieeexplore.ieee.org/iel5/5412664/5422059/05422258.pdf%3Farnumber%3D5422258&amp;amp;authDecision=-203"&gt;A polarization shift-keying system for underwater optical communications&lt;/a&gt;,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href="http://www.oceans10mtsieeeseattle.org/searchprogram.cfm?sessionID=66"&gt;A blue/green MEMS retroreflecting modulator for underwater optical communication&lt;/a&gt;,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wuwnet.acm.org/2010/posters.php"&gt;&amp;ldquo;Testbed for Underwater Optical Communications Experiments,&lt;/a&gt;&amp;rdquo; poster presentation, in WUWNet Conf. 2010.&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>my resume</title><link href="http://gallamine.com/my-resume.html" rel="alternate"></link><updated>2013-01-19T06:13:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:my-resume.html</id><summary type="html">&lt;p&gt;William Cox&lt;br /&gt;919-229-9269&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;EDUCATION &lt;/strong&gt;&lt;br /&gt;Ph.D. in Electrical Engineering (Dec. 2011); 3.72/4.0 GPA&lt;br /&gt;M.S. in Electrical Engineering (12/2007); 4.0/4.0 GPA&lt;br /&gt;B.S. in Electrical Engineering (06/2006); 3.92/4.0 GPA&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WORK EXPERIENCE&lt;br /&gt;&lt;/strong&gt;&lt;br /&gt;Underwater freespace optical communication system development;&lt;br /&gt;Photonics lab, Dr. John Muth (2006 &amp;ndash; present)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Design FPGA-based transmitter for on-off keying at 10 Mbps. Streams data from PC over USB port. Uses Verilog and Altera FPGA.&lt;/li&gt;
+&lt;li&gt;Design PMT based receiver for optical baseband signals.&lt;/li&gt;
+&lt;li&gt;Design/tested digital optical polarization modulation system for underwater communication using 405 nm diode lasers.&lt;/li&gt;
+&lt;li&gt;Created PSK transmitter for modulating retroreflector system. Wrote PSK receiver in MATLAB. Transmitter operating up to 1 Mbps.&lt;/li&gt;
+&lt;li&gt;Wrote Monte Carlo simulation of photon movement through water. Processes infinite number of photons in 4e6 blocks through variable number of scattering events. Infinite receivers on plane. Verified simulation with experimental results. Written in MATLAB and scales linearly with number of photons and scattering events.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Real-time streaming video link implemented with GNU Radio. Utilizes LED, modulating retroreflector, or diode laser link for transmitter. Transmits up to 4 Mbps with GMSK modulation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Underwater robot development; Underwater Robotics Club (2006)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Designed and built power system for underwater robot&lt;/li&gt;
+&lt;li&gt;Oversaw mechanical design of robot&lt;/li&gt;
+&lt;li&gt;Programmed control algorithms for maneuvering&lt;/li&gt;
+&lt;li&gt;Wrote embedded data acquisition system for acoustic navigation&lt;/li&gt;
+&lt;li&gt;Created electronics hardware stack for robot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Underwater robot control design; Underwater Robotics Club; (10/04&amp;ndash; 7/05)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Designed control algorithms for an underwater robot&lt;/li&gt;
+&lt;li&gt;Tested and refined control algorithms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Robotics Camp Instructor; Duke TIP; (6/2005)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Co-instructed robotics summer camp program for gifted and talent students&lt;/li&gt;
+&lt;li&gt;Taught students how to design and construct a robot to compete in the International Robotic Fire Fighting Contest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Robotics Camp Intern; NC State University; (6/2004)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Helped students construct and program an autonomous robot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;IT consultant; ProBiz Consulting LLC; (01/04 &amp;ndash; 2007)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintain website&lt;/li&gt;
+&lt;li&gt;Maintain computer systems &amp;ndash; provide technical support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PUBLICATIONS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode&lt;br /&gt;and Photomultiplier Tube,&amp;rdquo; M.S. thesis, Dept. of Elec. And Comp. Eng., North Carolina State University, Raleigh, NC, 2007.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;An underwater optical communication system implementing Reed-Solomon channel coding,&amp;rdquo; in Proc. OCEANS Conf. 2008.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A polarization shift-keying system for underwater optical communications,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A blue/green MEMS retroreflecting modulator for underwater optical communication,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Testbed for Underwater Optical Communications Experiments,&amp;rdquo; poster presentation, in WUWNet Conf. 2010.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Underwater Optical Communication Using Software Defined Radio Over LED and Laser Based Links,&amp;rdquo; upcoming in MILCOM Conf. 2011.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A MEMS modulating retroreflector for underwater optical communication at visible wavelengths,&amp;rdquo; unpublished&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RELATED&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Experience with Java, C, C#, PHP, Visual Basic, Perl, C++, assembly EXPERIENCE code, MATLAB, Simulink, LabVIEW, SolidWorks, FEMM, OPNET,&lt;br /&gt;Cadence, PSPICE, ORCAD Capture and Layout, and Linux.&lt;/p&gt;
+
+&lt;p&gt;Worked with optical systems, components, and lasers&lt;/p&gt;
+
+&lt;p&gt;Experienced with metal-working, including lathe and mill, woodworking, and mechanical construction&lt;/p&gt;
+
+&lt;p&gt;Vice-President of NCSU Underwater Robotics Team. Team designed and built autonomous underwater vehicle. (&amp;lsquo;04 &amp;ndash; &amp;lsquo;06).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HONORS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Awarded National Defense Science and Engineering Graduate Fellowship (2008 &amp;ndash; 2011)&lt;/p&gt;
+
+&lt;p&gt;Awarded Dean&amp;rsquo;s Graduate School Fellowship (2008 &amp;ndash; 2009)&lt;/p&gt;
+
+&lt;p&gt;Dean&amp;rsquo;s List (2001 &amp;ndash; 2006)&lt;/p&gt;
+
+&lt;p&gt;Eta Kappa Nu member, an Electrical Engineering honor society&lt;/p&gt;
+
+&lt;p&gt;Young Adult Coach/Mentor Award winner at NC FIRST LEGO League state tournament&lt;/p&gt;
+
+&lt;p&gt;
+&lt;script src="http://platform.linkedin.com/in.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" data-id="http://www.linkedin.com/in/williamcox" data-format="inline"&gt;&lt;/script&gt;
+&lt;/p&gt;</summary></entry><entry><title>About Me</title><link href="http://gallamine.com/about-me.html" rel="alternate"></link><updated>2013-01-19T06:08:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:about-me.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;I am a husband and a father.&lt;/li&gt;
+&lt;li&gt;I am a Maker, a Creator, a Builder.&lt;/li&gt;
+&lt;li&gt;I am an Engineer.&lt;/li&gt;
+&lt;li&gt;I am a &lt;a href="http://opc.org/goodnews.html"&gt;follower of Jesus.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="/my-resume/" title="My resume"&gt;My resume.&lt;/a&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BS Electrical Engineering - 2006&lt;/li&gt;
+&lt;li&gt;MS Electrical Engineering - 2007 
+&lt;a href="http://www.lib.ncsu.edu/resolver/1840.16/1696"&gt;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode and Photomultiplier Tube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PhD Electrical Engineering - 2012 
+&lt;a href="http://www.lib.ncsu.edu/resolver/1840.16/7588"&gt;Simulation, Modeling, and Design of Underwater Optical Communication Systems.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="/my-research" title="My research"&gt;Information on my research.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Previously I ran &lt;a href="htttp://robotbox.net"&gt;RobotBox.net&lt;/a&gt; and I recently sold &lt;a href="http://www.gorobotics.net"&gt;GoRobotics.net&lt;/a&gt;.&lt;/p&gt;</summary></entry></feed>

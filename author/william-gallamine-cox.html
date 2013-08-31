@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <title>William's Blog - William 'Gallamine' Cox</title>
+        <link rel="stylesheet" href="http://gallamine.com/theme/css/main.css">
+        <link href="http://gallamine.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="William's Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<!-- Using MathJax, with the delimiters $ -->
+<!-- Conflict with pygments for the .mo and .mi -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://gallamine.com/">William's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="http://gallamine.com/pages/about-me.html">About Me</a></li>
+                    <li><a href="http://gallamine.com/pages/my-research.html">my research</a></li>
+                    <li><a href="http://gallamine.com/pages/my-resume.html">my resume</a></li>
+                    <li><a href="http://gallamine.com/pages/thesis-changes-and-additions.html">Thesis Changes and Additions</a></li>
+                    <li><a href="http://gallamine.com/category/misc.html">misc</a></li>
+                    <li><a href="http://gallamine.com/category/pages.html">Pages</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://gallamine.com/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html">A Sigmoid Function Without the Exponential: Elliot Sigmoid Activation Function</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-01-21T20:51:00">
+                Mon 21 January 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info --><p><img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_ElliotVsExp.png" /></p>
+<p>Today I learned about the Elliot Activation (or Sigmoid) Function. In fact, The MathWorks just included it in their <a href="http://www.mathworks.com/help/nnet/ref/elliotsig.html">most recent update to the Neural Network toolbox</a>. The function was first introduced in 1993 by D.L. Elliot under the title <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.7204">A Better Activation Function for Artificial
+Neural Networks</a>. The function closely approximates the Sigmoid or Hyperbolic Tangent functions for small values, however it takes longer to converge for large values (i.e. It doesn't go to 1 or 0 as fast), though this isn't particularly a problem if you're using it for classification. </p>
+<p>In my testing in MATLAB "the function computes over <strong>2x faster</strong> than the exponential sigmoid function", which, for certain types of ML problems can lead to a significant speed improvement. So what is this function? </p>
+<p>Behold:</p>
+<p>\begin{aligned}
+\sigma_e(x) = \frac{1}{1 + |x|}
+\end{aligned}</p>
+<p>It's also differntiable with the derivative of </p>
+<p>\begin{aligned}
+\frac{\partial\sigma_e(x)}{\partial x} = \frac{1}{(1 + |x|)^2}
+\end{aligned}</p>
+<p>For an activation function in the range $ [0,1] $ <a href="http://www.heatonresearch.com/wiki/Elliott_Activation_Function">it can be written as</a></p>
+<p>\begin{aligned}
+\sigma_e(x) = \frac{0.5(x)}{1 + |x|} + 0.5
+\end{aligned}</p>
+<p>In MATLAB this can be simply written as</p>
+<div class="highlight"><pre><span class="k">function</span><span class="w"> </span>p <span class="p">=</span><span class="w"> </span><span class="nf">elliotsig</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+<span class="c">% From http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.7204</span>
+<span class="c">% &quot;A better Activation Function for Artificial Neural Networks&quot;</span>
+
+<span class="n">p</span> <span class="p">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>    
+
+<span class="k">end</span>
+</pre></div>
+
+
+<p>Here's an image I ganked from Wikipedia that shows the Elliot, Exponential and Hyperbolic Tangent Sigmoid functions:</p>
+<p><a href="http://en.wikipedia.org/wiki/File:Gjl-t(x).svg"><img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_sigmoid.png" /></a></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://gallamine.com/nfl-bad-lipreading.html" rel="bookmark"
+                           title="Permalink to "NFL Bad Lipreading"">"NFL Bad Lipreading"</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-19T07:09:00">
+                Sat 19 January 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info -->                <iframe width="560" height="315" src="http://www.youtube.com/embed/Zce-QT7MGSE" frameborder="0" allowfullscreen></iframe>
+                <a class="readmore" href="http://gallamine.com/nfl-bad-lipreading.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://gallamine.com/thesis-changes-and-additions.html" rel="bookmark"
+                           title="Permalink to Thesis Changes and Additions">Thesis Changes and Additions</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-19T06:52:00">
+                Sat 19 January 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/pages.html">Pages</a>. </p>
+
+</footer><!-- /.post-info -->                <p>Thesis errata, changes, and updates shown here. The <a href="https://github.com/gallamine/Photonator">source code for Photonator can be found on Github</a>.</p>
+
+<p><strong>Errata</strong>:</p>
+
+<ul>
+<li>The thesis is current perfect.</li>
+</ul>
+                <a class="readmore" href="http://gallamine.com/thesis-changes-and-additions.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://gallamine.com/my-research.html" rel="bookmark"
+                           title="Permalink to my research">my research</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-19T06:15:00">
+                Sat 19 January 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/pages.html">Pages</a>. </p>
+
+</footer><!-- /.post-info -->                <p>I am working on PhD in Electrical Engineering focusing on underwater freespace optical communication. I shoot lasers through water and try and communicate. Fun stuff.</p>
+
+<p>Here are a list of my publications:</p>
+
+<ul>
+<li><a href="http://repository.lib.ncsu.edu/ir/handle/1840.16/1696">&ldquo;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode<br />and Photomultiplier Tube,&rdquo;</a>&nbsp;M.S. thesis ...</li></ul>
+                <a class="readmore" href="http://gallamine.com/my-research.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://gallamine.com/my-resume.html" rel="bookmark"
+                           title="Permalink to my resume">my resume</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-19T06:13:00">
+                Sat 19 January 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/pages.html">Pages</a>. </p>
+
+</footer><!-- /.post-info -->                <p>William Cox<br />919-229-9269</p>
+
+<p><strong>EDUCATION </strong><br />Ph.D. in Electrical Engineering (Dec. 2011); 3.72/4.0 GPA<br />M.S. in Electrical Engineering (12/2007); 4.0/4.0 GPA<br />B.S. in Electrical Engineering (06/2006); 3.92/4.0 GPA</p>
+
+<p><strong>WORK EXPERIENCE<br /></strong><br />Underwater freespace optical communication system development;<br />Photonics lab ...</p>
+                <a class="readmore" href="http://gallamine.com/my-resume.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://gallamine.com/about-me.html" rel="bookmark"
+                           title="Permalink to About Me">About Me</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-01-19T06:08:00">
+                Sat 19 January 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/pages.html">Pages</a>. </p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>I am a husband and a father.</li>
+<li>I am a Maker, a Creator, a Builder.</li>
+<li>I am an Engineer.</li>
+<li>I am a <a href="http://opc.org/goodnews.html">follower of Jesus.</a></li>
+</ul>
+<p><a href="/my-resume/" title="My resume">My resume.</a> </p>
+<ul>
+<li>BS Electrical Engineering - 2006</li>
+<li>MS Electrical Engineering - 2007 
+<a href="http://www.lib.ncsu.edu/resolver/1840.16/1696">A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode and Photomultiplier Tube ...</a></li></ul>
+                <a class="readmore" href="http://gallamine.com/about-me.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://gallamine.com/binary-search-algorithm-in-matlab.html" rel="bookmark"
+                           title="Permalink to Binary Search Algorithm in MATLAB">Binary Search Algorithm in MATLAB</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-01-19T06:40:00">
+                Wed 19 January 2011
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://gallamine.com/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="http://gallamine.com/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info -->                <p>Here’s how I did a quick binary search in MATLAB:</p>
+<div class="highlight"><pre>    <span class="n">randNum</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">();</span>
+
+    <span class="n">minIndex</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="n">maxIndex</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">cdf_scatterSM</span><span class="p">);</span>
+
+    <span class="n">midIndex</span> <span class="p">=</span> <span class="n">minIndex</span> <span class="o">+</span> <span class="nb">round</span><span class="p">((</span><span class="n">maxIndex</span> <span class="o">-</span> <span class="n">minIndex</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="n">randNum</span> <span class="o">~=</span> <span class="n">cdf_scatterSM</span><span class="p">(</span><span class="n">midIndex</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">maxIndex</span> <span class="o">&gt;</span><span class="p">=</span> <span class="n">minIndex</span>
+
+        <span class="n">midIndex</span> <span class="p">=</span> <span class="n">minIndex</span> <span class="o">+</span> <span class="nb">round</span><span class="p">((</span><span class="n">maxIndex</span> <span class="o">-</span> <span class="n">minIndex</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="n">randNum</span> <span class="o">&gt;</span> <span class="n">cdf_scatterSM</span><span class="p">(</span><span class="n">midIndex</span><span class="p">)</span>
+
+            <span class="n">minIndex</span> <span class="p">=</span> <span class="n">midIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">elseif</span> <span class="n">randNum</span> <span class="o">&lt;</span> <span class="n">cdf_scatterSM</span><span class="p">(</span><span class="n">midIndex</span><span class="p">)</span>
+
+            <span class="n">maxIndex</span> <span class="p">=</span> <span class="n">midIndex</span> <span class="o">-</span> <span class="mi">1 ...</span></pre></div>
+                <a class="readmore" href="http://gallamine.com/binary-search-algorithm-in-matlab.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://gallamine.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

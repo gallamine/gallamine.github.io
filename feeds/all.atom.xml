@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>William's Blog</title><link href="http://gallamine.com/" rel="alternate"></link><link href="http://gallamine.com/feeds/all.atom.xml" rel="self"></link><id>http://gallamine.com/</id><updated>2013-01-21T20:51:00+01:00</updated><entry><title>A Sigmoid Function Without the Exponential: Elliot Sigmoid Activation Function</title><link href="http://gallamine.com/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html" rel="alternate"></link><updated>2013-01-21T20:51:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-21:a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html</id><summary type="html">&lt;p&gt;&lt;img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_ElliotVsExp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Today I learned about the Elliot Activation (or Sigmoid) Function. In fact, The MathWorks just included it in their &lt;a href="http://www.mathworks.com/help/nnet/ref/elliotsig.html"&gt;most recent update to the Neural Network toolbox&lt;/a&gt;. The function was first introduced in 1993 by D.L. Elliot under the title &lt;a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.7204"&gt;A Better Activation Function for Artificial
+Neural Networks&lt;/a&gt;. The function closely approximates the Sigmoid or Hyperbolic Tangent functions for small values, however it takes longer to converge for large values (i.e. It doesn't go to 1 or 0 as fast), though this isn't particularly a problem if you're using it for classification. &lt;/p&gt;
+&lt;p&gt;In my testing in MATLAB "the function computes over &lt;strong&gt;2x faster&lt;/strong&gt; than the exponential sigmoid function", which, for certain types of ML problems can lead to a significant speed improvement. So what is this function? &lt;/p&gt;
+&lt;p&gt;Behold:&lt;/p&gt;
+&lt;p&gt;\begin{aligned}
+\sigma_e(x) = \frac{1}{1 + |x|}
+\end{aligned}&lt;/p&gt;
+&lt;p&gt;It's also differntiable with the derivative of &lt;/p&gt;
+&lt;p&gt;\begin{aligned}
+\frac{\partial\sigma_e(x)}{\partial x} = \frac{1}{(1 + |x|)^2}
+\end{aligned}&lt;/p&gt;
+&lt;p&gt;For an activation function in the range $ [0,1] $ &lt;a href="http://www.heatonresearch.com/wiki/Elliott_Activation_Function"&gt;it can be written as&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;\begin{aligned}
+\sigma_e(x) = \frac{0.5(x)}{1 + |x|} + 0.5
+\end{aligned}&lt;/p&gt;
+&lt;p&gt;In MATLAB this can be simply written as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;p &lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;elliotsig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="c"&gt;% From http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.7204&lt;/span&gt;
+&lt;span class="c"&gt;% &amp;quot;A better Activation Function for Artificial Neural Networks&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
+
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here's an image I ganked from Wikipedia that shows the Elliot, Exponential and Hyperbolic Tangent Sigmoid functions:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/File:Gjl-t(x).svg"&gt;&lt;img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_sigmoid.png" /&gt;&lt;/a&gt;&lt;/p&gt;</summary></entry><entry><title>"NFL Bad Lipreading"</title><link href="http://gallamine.com/nfl-bad-lipreading.html" rel="alternate"></link><updated>2013-01-19T07:09:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:nfl-bad-lipreading.html</id><summary type="html">&lt;iframe width="560" height="315" src="http://www.youtube.com/embed/Zce-QT7MGSE" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</summary></entry><entry><title>Thesis Changes and Additions</title><link href="http://gallamine.com/thesis-changes-and-additions.html" rel="alternate"></link><updated>2013-01-19T06:52:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:thesis-changes-and-additions.html</id><summary type="html">&lt;p&gt;Thesis errata, changes, and updates shown here. The &lt;a href="https://github.com/gallamine/Photonator"&gt;source code for Photonator can be found on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Errata&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The thesis is current perfect.&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>my research</title><link href="http://gallamine.com/my-research.html" rel="alternate"></link><updated>2013-01-19T06:15:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:my-research.html</id><summary type="html">&lt;p&gt;I am working on PhD in Electrical Engineering focusing on underwater freespace optical communication. I shoot lasers through water and try and communicate. Fun stuff.&lt;/p&gt;
+
+&lt;p&gt;Here are a list of my publications:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://repository.lib.ncsu.edu/ir/handle/1840.16/1696"&gt;&amp;ldquo;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode&lt;br /&gt;and Photomultiplier Tube,&amp;rdquo;&lt;/a&gt;&amp;nbsp;M.S. thesis, Dept. of Elec. And Comp. Eng., North Carolina State University, Raleigh, NC, 2007.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href="http://ieeexplore.ieee.org/Xplore/login.jsp?url=http://ieeexplore.ieee.org/iel5/5089336/5151799/05151992.pdf%3Farnumber%3D5151992&amp;amp;authDecision=-203"&gt;An underwater optical communication system implementing Reed-Solomon channel coding,&lt;/a&gt;&amp;rdquo; in Proc. OCEANS Conf. 2008.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href="http://ieeexplore.ieee.org/Xplore/login.jsp?url=http://ieeexplore.ieee.org/iel5/5412664/5422059/05422258.pdf%3Farnumber%3D5422258&amp;amp;authDecision=-203"&gt;A polarization shift-keying system for underwater optical communications&lt;/a&gt;,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;&lt;a href="http://www.oceans10mtsieeeseattle.org/searchprogram.cfm?sessionID=66"&gt;A blue/green MEMS retroreflecting modulator for underwater optical communication&lt;/a&gt;,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wuwnet.acm.org/2010/posters.php"&gt;&amp;ldquo;Testbed for Underwater Optical Communications Experiments,&lt;/a&gt;&amp;rdquo; poster presentation, in WUWNet Conf. 2010.&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>my resume</title><link href="http://gallamine.com/my-resume.html" rel="alternate"></link><updated>2013-01-19T06:13:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:my-resume.html</id><summary type="html">&lt;p&gt;William Cox&lt;br /&gt;919-229-9269&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;EDUCATION &lt;/strong&gt;&lt;br /&gt;Ph.D. in Electrical Engineering (Dec. 2011); 3.72/4.0 GPA&lt;br /&gt;M.S. in Electrical Engineering (12/2007); 4.0/4.0 GPA&lt;br /&gt;B.S. in Electrical Engineering (06/2006); 3.92/4.0 GPA&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WORK EXPERIENCE&lt;br /&gt;&lt;/strong&gt;&lt;br /&gt;Underwater freespace optical communication system development;&lt;br /&gt;Photonics lab, Dr. John Muth (2006 &amp;ndash; present)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Design FPGA-based transmitter for on-off keying at 10 Mbps. Streams data from PC over USB port. Uses Verilog and Altera FPGA.&lt;/li&gt;
+&lt;li&gt;Design PMT based receiver for optical baseband signals.&lt;/li&gt;
+&lt;li&gt;Design/tested digital optical polarization modulation system for underwater communication using 405 nm diode lasers.&lt;/li&gt;
+&lt;li&gt;Created PSK transmitter for modulating retroreflector system. Wrote PSK receiver in MATLAB. Transmitter operating up to 1 Mbps.&lt;/li&gt;
+&lt;li&gt;Wrote Monte Carlo simulation of photon movement through water. Processes infinite number of photons in 4e6 blocks through variable number of scattering events. Infinite receivers on plane. Verified simulation with experimental results. Written in MATLAB and scales linearly with number of photons and scattering events.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Real-time streaming video link implemented with GNU Radio. Utilizes LED, modulating retroreflector, or diode laser link for transmitter. Transmits up to 4 Mbps with GMSK modulation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Underwater robot development; Underwater Robotics Club (2006)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Designed and built power system for underwater robot&lt;/li&gt;
+&lt;li&gt;Oversaw mechanical design of robot&lt;/li&gt;
+&lt;li&gt;Programmed control algorithms for maneuvering&lt;/li&gt;
+&lt;li&gt;Wrote embedded data acquisition system for acoustic navigation&lt;/li&gt;
+&lt;li&gt;Created electronics hardware stack for robot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Underwater robot control design; Underwater Robotics Club; (10/04&amp;ndash; 7/05)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Designed control algorithms for an underwater robot&lt;/li&gt;
+&lt;li&gt;Tested and refined control algorithms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Robotics Camp Instructor; Duke TIP; (6/2005)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Co-instructed robotics summer camp program for gifted and talent students&lt;/li&gt;
+&lt;li&gt;Taught students how to design and construct a robot to compete in the International Robotic Fire Fighting Contest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Robotics Camp Intern; NC State University; (6/2004)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Helped students construct and program an autonomous robot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;IT consultant; ProBiz Consulting LLC; (01/04 &amp;ndash; 2007)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintain website&lt;/li&gt;
+&lt;li&gt;Maintain computer systems &amp;ndash; provide technical support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PUBLICATIONS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode&lt;br /&gt;and Photomultiplier Tube,&amp;rdquo; M.S. thesis, Dept. of Elec. And Comp. Eng., North Carolina State University, Raleigh, NC, 2007.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;An underwater optical communication system implementing Reed-Solomon channel coding,&amp;rdquo; in Proc. OCEANS Conf. 2008.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A polarization shift-keying system for underwater optical communications,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A blue/green MEMS retroreflecting modulator for underwater optical communication,&amp;rdquo; in Proc. OCEANS Conf. 2009.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Testbed for Underwater Optical Communications Experiments,&amp;rdquo; poster presentation, in WUWNet Conf. 2010.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Underwater Optical Communication Using Software Defined Radio Over LED and Laser Based Links,&amp;rdquo; upcoming in MILCOM Conf. 2011.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;A MEMS modulating retroreflector for underwater optical communication at visible wavelengths,&amp;rdquo; unpublished&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RELATED&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Experience with Java, C, C#, PHP, Visual Basic, Perl, C++, assembly EXPERIENCE code, MATLAB, Simulink, LabVIEW, SolidWorks, FEMM, OPNET,&lt;br /&gt;Cadence, PSPICE, ORCAD Capture and Layout, and Linux.&lt;/p&gt;
+
+&lt;p&gt;Worked with optical systems, components, and lasers&lt;/p&gt;
+
+&lt;p&gt;Experienced with metal-working, including lathe and mill, woodworking, and mechanical construction&lt;/p&gt;
+
+&lt;p&gt;Vice-President of NCSU Underwater Robotics Team. Team designed and built autonomous underwater vehicle. (&amp;lsquo;04 &amp;ndash; &amp;lsquo;06).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HONORS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Awarded National Defense Science and Engineering Graduate Fellowship (2008 &amp;ndash; 2011)&lt;/p&gt;
+
+&lt;p&gt;Awarded Dean&amp;rsquo;s Graduate School Fellowship (2008 &amp;ndash; 2009)&lt;/p&gt;
+
+&lt;p&gt;Dean&amp;rsquo;s List (2001 &amp;ndash; 2006)&lt;/p&gt;
+
+&lt;p&gt;Eta Kappa Nu member, an Electrical Engineering honor society&lt;/p&gt;
+
+&lt;p&gt;Young Adult Coach/Mentor Award winner at NC FIRST LEGO League state tournament&lt;/p&gt;
+
+&lt;p&gt;
+&lt;script src="http://platform.linkedin.com/in.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" data-id="http://www.linkedin.com/in/williamcox" data-format="inline"&gt;&lt;/script&gt;
+&lt;/p&gt;</summary></entry><entry><title>About Me</title><link href="http://gallamine.com/about-me.html" rel="alternate"></link><updated>2013-01-19T06:08:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2013-01-19:about-me.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;I am a husband and a father.&lt;/li&gt;
+&lt;li&gt;I am a Maker, a Creator, a Builder.&lt;/li&gt;
+&lt;li&gt;I am an Engineer.&lt;/li&gt;
+&lt;li&gt;I am a &lt;a href="http://opc.org/goodnews.html"&gt;follower of Jesus.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="/my-resume/" title="My resume"&gt;My resume.&lt;/a&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BS Electrical Engineering - 2006&lt;/li&gt;
+&lt;li&gt;MS Electrical Engineering - 2007 
+&lt;a href="http://www.lib.ncsu.edu/resolver/1840.16/1696"&gt;A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode and Photomultiplier Tube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PhD Electrical Engineering - 2012 
+&lt;a href="http://www.lib.ncsu.edu/resolver/1840.16/7588"&gt;Simulation, Modeling, and Design of Underwater Optical Communication Systems.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="/my-research" title="My research"&gt;Information on my research.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Previously I ran &lt;a href="htttp://robotbox.net"&gt;RobotBox.net&lt;/a&gt; and I recently sold &lt;a href="http://www.gorobotics.net"&gt;GoRobotics.net&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>Binary Search Algorithm in MATLAB</title><link href="http://gallamine.com/binary-search-algorithm-in-matlab.html" rel="alternate"></link><updated>2011-01-19T06:40:00+01:00</updated><author><name>William 'Gallamine' Cox</name></author><id>tag:gallamine.com,2011-01-19:binary-search-algorithm-in-matlab.html</id><summary type="html">&lt;p&gt;Here’s how I did a quick binary search in MATLAB:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;randNum&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+    &lt;span class="n"&gt;minIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;maxIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cdf_scatterSM&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;midIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;maxIndex&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;randNum&lt;/span&gt; &lt;span class="o"&gt;~=&lt;/span&gt; &lt;span class="n"&gt;cdf_scatterSM&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;midIndex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;maxIndex&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt;
+
+        &lt;span class="n"&gt;midIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;maxIndex&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;randNum&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cdf_scatterSM&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;midIndex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="n"&gt;minIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;midIndex&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="k"&gt;elseif&lt;/span&gt; &lt;span class="n"&gt;randNum&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;cdf_scatterSM&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;midIndex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="n"&gt;maxIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;midIndex&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="n"&gt;midIndex&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;maxIndex&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;minIndex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;midIndex&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: The index was then used for linear interpolation, hence the ‘minIndex’ value starting at 2 instead of 1 (remember, MATLAB indexes from 1).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit 5/31/11:&lt;/strong&gt; I just discovered a bug in this algorithm (I changed it above). The while loop 2nd condition should be “maxIndex &amp;gt;= minIndex”. Apologies.&lt;/p&gt;</summary></entry></feed>
