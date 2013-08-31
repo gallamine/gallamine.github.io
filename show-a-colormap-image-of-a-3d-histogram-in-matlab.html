@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8">
-        <title>William's Blog</title>
+        <title>Show a Colormap Image of a 3D Histogram in MATLAB</title>
         <link rel="stylesheet" href="/theme/css/main.css">
 
         <!--[if IE]>
@@ -32,33 +32,41 @@
                     <li><a href="/pages/my-research.html">my research</a></li>
                     <li><a href="/pages/my-resume.html">my resume</a></li>
                     <li><a href="/pages/thesis-changes-and-additions.html">Thesis Changes and Additions</a></li>
-                    <li><a href="/category/misc.html">misc</a></li>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
                     <li><a href="/category/pages.html">Pages</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
-<h1>Archives for William's Blog</h1>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/show-a-colormap-image-of-a-3d-histogram-in-matlab.html" rel="bookmark"
+           title="Permalink to Show a Colormap Image of a 3D Histogram in MATLAB">Show a Colormap Image of a 3D Histogram in MATLAB</a></h1>
+    </header>
 
-<dl>
-    <dt>Mon 21 January 2013</dt>
-    <dd><a href="/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html">A Sigmoid Function Without the Exponential: Elliot Sigmoid Activation Function</a></dd>
-    <dt>Sat 19 January 2013</dt>
-    <dd><a href="/nfl-bad-lipreading.html">"NFL Bad Lipreading"</a></dd>
-    <dt>Sat 19 January 2013</dt>
-    <dd><a href="/thesis-changes-and-additions.html">Thesis Changes and Additions</a></dd>
-    <dt>Sat 19 January 2013</dt>
-    <dd><a href="/my-research.html">my research</a></dd>
-    <dt>Sat 19 January 2013</dt>
-    <dd><a href="/my-resume.html">my resume</a></dd>
-    <dt>Sat 19 January 2013</dt>
-    <dd><a href="/about-me.html">About Me</a></dd>
-    <dt>Thu 19 January 2012</dt>
-    <dd><a href="/show-a-colormap-image-of-a-3d-histogram-in-matlab.html">Show a Colormap Image of a 3D Histogram in MATLAB</a></dd>
-    <dt>Thu 19 January 2012</dt>
-    <dd><a href="/setting-the-axis-on-a-matlab-plot.html">Setting the Axis on a MATLAB Plot</a></dd>
-    <dt>Wed 19 January 2011</dt>
-    <dd><a href="/binary-search-algorithm-in-matlab.html">Binary Search Algorithm in MATLAB</a></dd>
-</dl>
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-01-19T06:12:00">
+                Thu 19 January 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/william-gallamine-cox.html">William 'Gallamine' Cox</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info -->      <p>This 3d histogram function in matlab, “hist3” sometimes makes visualization difficult, especially if you need to remap the axis or want to view the histogram from the top, down. The easy solution is to convert the histogram to a colormapped image. The code below will do this. It takes 2 arrays, X and Y and takes a histogram of them and maps the histogram values to an image:</p>
+<div class="highlight"><pre><span class="n">cnt</span> <span class="p">=</span> <span class="n">hist3</span><span class="p">([</span><span class="n">Y</span> <span class="n">X</span><span class="p">],</span>’<span class="n">Edges</span>’<span class="p">,{</span><span class="n">edgeXMin</span><span class="p">:</span><span class="n">binXSize</span><span class="p">:</span><span class="n">edgeXMax</span> <span class="n">edgeYMin</span><span class="p">:</span><span class="n">binYSize</span><span class="p">:</span><span class="n">edgeYMax</span><span class="p">});</span>
+
+<span class="n">finalPdf</span> <span class="p">=</span> <span class="n">cnt</span><span class="o">./</span><span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">cnt</span><span class="p">));</span> <span class="c">% normalize histogram to highest value</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">finalPdf</span><span class="p">,[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span> <span class="c">% Show image with min and max values of 0 &amp; 1</span>
+
+<span class="n">colormap</span><span class="p">(</span><span class="n">jet</span><span class="p">);</span> <span class="c">% Change the colormap to make it fancy</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
 </section>
         <section id="extras" class="body">
                 <div class="blogroll">
