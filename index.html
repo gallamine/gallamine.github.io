@@ -39,7 +39,48 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html">A Sigmoid Function Without the Exponential: Elliot Sigmoid Activation Function</a></h1>
+                    <h1 class="entry-title"><a href="/whole-house-sound-on-the-cheap.html">Whole House Sound on the Cheap</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-09-07T10:02:00">
+                Sat 07 September 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/william-cox.html">William Cox</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info --><p>I happen to like the luxury of "whole house sound". I don't consider myself an audiophile, but it's nice to be able to queue up music on a Saturday morning and be able to move through the house about my business and have it stay in sync. <a href="http://sonos.com">Sonos</a> seems to be the Gold Standard here, but I can't stomach the price. Apple's AirPlay works well with Apple hardware but leaves a bit lacking in terms of multiple speaker controls and receiving sound from a variety of sources. </p>
+<ol>
+<li>Buy AirPort Express receivers from Craigslist.</li>
+</ol>
+<p>There has been three models of AirPort Express receivers. The latest model is nice and all, but for the purpose of sending sound the previous model (A1264) works just fine. I paid $30 for both of mine. <a href="http://priceonomics.com/search/?q=airport+express&amp;fs=1">Try Craigslist for yours</a>. The older model works fine but it is only 802.11 b/g and probably best left to its own network.</p>
+<ol>
+<li>Hook cheap speakers/amplifiers to the receivers. <a href="http://priceonomics.com/search/?q=computer%20speakers">Again, Craigslist helps here</a>. </li>
+</ol>
+<p>Your own taste for sound quality dictates here. Frankly I'm no audiophile so simple powered speakers and maybe a subwoofer work just fine.</p>
+<ol>
+<li>AirFoil running on my laptop sends sound from any source </li>
+</ol>
+<p><a href="http://www.rogueamoeba.com/airfoil/">AirFoil</a> is an amazing - cross platform - piece of software that "just works." The app can capture sound from any playing source - browser, Spotify, Pandora, iTunes, etc. - and stream it to any of the receivers on your network. This includes Apple AirPlay devices, other phones running the "speaker" app or other computers running the AirFoil software. The software works well enough to sync sound across my whole house with now pauses or phase delays.</p>
+<ol>
+<li>AirFoils (very recent) control app lets me adjust sound and speaker zones on the fly from my phone.</li>
+</ol>
+<p>The very recently released <a href="http://www.rogueamoeba.com/airfoil/remote/">AirFoil control app</a> now lets me control my <em>laptop</em> sound source from my phone. It also lets me control the <em>individual volumes</em> of all the speaker zones. This is amazing, as it lets me cue up music in Spotity or iTunes and then change things on the fly from my phone, like when I'm chilling on the porch.</p>
+<p>I estimate the total cost per "zone" is anywhere from $30 - $74.</p><p>There are <a href="/whole-house-sound-on-the-cheap.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html" rel="bookmark"
+                           title="Permalink to A Sigmoid Function Without the Exponential: Elliot Sigmoid Activation Function">A Sigmoid Function Without the Exponential: Elliot Sigmoid Activation Function</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-01-21T20:51:00">
                 Mon 21 January 2013
@@ -50,40 +91,12 @@
         </address>
 <p>In <a href="/category/misc.html">misc</a>. </p>
 
-</footer><!-- /.post-info --><p><img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_ElliotVsExp.png" /></p>
+</footer><!-- /.post-info -->                <p><img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_ElliotVsExp.png" /></p>
 <p>Today I learned about the Elliot Activation (or Sigmoid) Function. In fact, The MathWorks just included it in their <a href="http://www.mathworks.com/help/nnet/ref/elliotsig.html">most recent update to the Neural Network toolbox</a>. The function was first introduced in 1993 by D.L. Elliot under the title <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.7204">A Better Activation Function for Artificial
-Neural Networks</a>. The function closely approximates the Sigmoid or Hyperbolic Tangent functions for small values, however it takes longer to converge for large values (i.e. It doesn't go to 1 or 0 as fast), though this isn't particularly a problem if you're using it for classification. </p>
-<p>In my testing in MATLAB "the function computes over <strong>2x faster</strong> than the exponential sigmoid function", which, for certain types of ML problems can lead to a significant speed improvement. So what is this function? </p>
-<p>Behold:</p>
-<p>\begin{aligned}
-\sigma_e(x) = \frac{1}{1 + |x|}
-\end{aligned}</p>
-<p>It's also differntiable with the derivative of </p>
-<p>\begin{aligned}
-\frac{\partial\sigma_e(x)}{\partial x} = \frac{1}{(1 + |x|)^2}
-\end{aligned}</p>
-<p>For an activation function in the range $ [0,1] $ <a href="http://www.heatonresearch.com/wiki/Elliott_Activation_Function">it can be written as</a></p>
-<p>\begin{aligned}
-\sigma_e(x) = \frac{0.5(x)}{1 + |x|} + 0.5
-\end{aligned}</p>
-<p>In MATLAB this can be simply written as</p>
-<div class="highlight"><pre><span class="k">function</span><span class="w"> </span>p <span class="p">=</span><span class="w"> </span><span class="nf">elliotsig</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
-<span class="c">% From http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.7204</span>
-<span class="c">% &quot;A better Activation Function for Artificial Neural Networks&quot;</span>
-
-<span class="n">p</span> <span class="p">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>    
-
-<span class="k">end</span>
-</pre></div>
-
-
-<p>Here's an image I ganked from Wikipedia that shows the Elliot, Exponential and Hyperbolic Tangent Sigmoid functions:</p>
-<p><a href="http://en.wikipedia.org/wiki/File:Gjl-t(x).svg"><img alt="Sigmoid Function" src="/images/2013-01-21-a-sigmoid-function-with-out-the-exponential-elliot-sigmoid-activation-function_sigmoid.png" /></a></p><p>There are <a href="/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+Neural Networks</a>. The ...</p>
+                <a class="readmore" href="/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html">read more</a>
+<p>There are <a href="/a-sigmoid-function-without-the-exponential-elliot-sigmoid-activation-function.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
