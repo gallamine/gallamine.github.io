@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Initial Review of the Automatic Link</title>
+        <title>What's the Chance an Example will be Chosen from a Bootstrap Sample?</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -26,15 +26,15 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/initial-review-of-the-automatic-link.html" rel="bookmark"
-           title="Permalink to Initial Review of the Automatic Link">Initial Review of the Automatic Link</a></h1>
+        <a href="/whats-the-chance-an-example-will-be-chosen-from-a-bootstrap-sample.html" rel="bookmark"
+           title="Permalink to What's the Chance an Example will be Chosen from a Bootstrap Sample?">What's the Chance an Example will be Chosen from a Bootstrap Sample?</a></h1>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="gallamine">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2013-09-07T13:02:00">
-                Sat 07 September 2013
+        <abbr class="published" title="2013-10-15T20:51:00">
+                Tue 15 October 2013
         </abbr>
 
         <address class="vcard author">
@@ -42,22 +42,20 @@
         </address>
 <p>In <a href="/category/misc.html">misc</a>. </p>
 
-</footer><!-- /.post-info -->      <p>I purchased a <a href="http://www.automatic">Link</a> to measure my driving habits. One of the things I was most curious about was the cost of my commute. I have two some equal commute options and I wanted to know if there was a significant savings to one or the other. I only have 18 data points so far (as I split my commute twice a week for a workout) but here's the data so far:</p>
-<ul>
-<li>Route 1 (17.78 miles) Cost - \$2.86/one way</li>
-<li>Route 2 (18.55 miles) Cost - \$2.75/one way</li>
-</ul>
-<p><strong>Weekly Cost Difference: \$1.0833</strong></p>
-<ul>
-<li>Route 1 Time - 27.25 minutes</li>
-<li>Route 2 Time - 28.33 minutes</li>
-</ul>
-<p><strong>Weekly Time Difference: 10.83 minutes</strong></p>
-<p>Now, this isn't the full story, since Route 1 is somewhat asymetric. It takes ~25.75 minutes to <em>go</em> and 30.25 minutes to <em>come</em> on Route 1,  whereas Route 2 is pretty symetric. It's also interesting to see that Route 1 is <em>shorter</em> and <em>more expensive</em> as my average speed is much higher (there are large portions where I'm going &gt;75 MPH). I should also note that I have 12 datapoints for Route 1 and only 6 for Route 2. <strong>Definitely not enough data</strong>. Saving \$1 a week at the expense of 10 minutes doesn't really seem worth it. However, Route 2 is much more senic and that gives me <a href="http://www.str.org/podcasts">10 more minutes of Podcast time</a>.  </p>
-<p>Here's a histogram of my trip times:</p>
-<p><img src="https://docs.google.com/spreadsheet/oimg?key=0AoxwSP5MVbP2dHRKWm5NNmVjWEZ5M0RUTTRiaTAxeFE&oid=1&zx=ih9oguxn3qw" /></p>
-<p>I'll post again as the data becomes larger.</p>
-<p>As for the Link itself, it seems to work pretty well (especially for a beta). It'll be nice as features are added, like an API, so I won't have to manually collect these statistics. I don't necessarily see it changing my habits that much - maybe it would for my wife who makes many more elective trips.</p>
+</footer><!-- /.post-info -->      <p>I've been studying Random Forest classifiers for fun and profit. They have many advantages, work fairly well and are easy to tune. One of the features of a RF classifier is that it is an ensemble of tree-based classifiers, where each tree is learned using a bootstrap sample (with replacement) of the data.</p>
+<p>If we pretend our data is like a big pool of numbered balls, we draw one ball from the pool and copy the number to another ball that we set aside. Now, toss the ball back, mix, pick another ball and repeat. In this scheme you have a chance of drawing the same ball twice (or more). This probability is $ \frac{1}{N}^D $, where D is the number of draws, if the balls are well mixed.</p>
+<p>As I was (reading Leo Brieman's description of the algorithm)[http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm] (which is very readable), I noticed the remark, "About one-third of the cases are left out of the bootstrap sample and not used in the construction of the kth tree". Is that true?</p>
+<p>If the probability of chosing one sample at random is $1/N$, then the probability that a sample is <em>not</em> chosen is $1-\frac{1}{N}$. For independent draws, the chance that a sample is not chosen twice is </p>
+<p>\begin{aligned}
+(1- \frac{1}{N})(1- \frac{1}{N}) = (1- \frac{1}{N})^2
+\end{aligned}.</p>
+<p>For $D$ independent draws the probably of <em>not</em> chosing that sample is </p>
+<p>$(1- \frac{1}{N})^D$</p>
+<p>Hmmmm ... that looks interesting. Suppose we let $D$ go to $N$, meaning if we have 10 total samples we draw 10 "boostrap samples". What's the probability that we'll miss a sample? (Wolfram|Alpha)[http://www.wolframalpha.com/input/?i=%281-1%2Fn%29%5En] can make this a bit easier. Turns that as we go to a very large dataset, $N\arrow\infinity$ this converges to something specific:</p>
+<p>$\lim_{N\to\infty }(1-\frac{1}{N})^N=\frac{1}{e}\approx 0.36787...$</p>
+<p>Pretty interesting. This means that the probability a sample <em>will</em> be chosen is $\approx 0.64$, which justifies Brieman's statement that, "About one-third of the cases are left out".</p>
+<p>Pictorally this looks like:</p>
+<p><img alt="bootstrap sample" src="/images/bootstrap_sample.png" /></p>
     </div><!-- /.entry-content -->
 
   </article>
