@@ -8,6 +8,19 @@
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
 </head>
 
 <body id="index" class="home">
@@ -44,15 +57,19 @@
 
 </footer><!-- /.post-info -->      <p>I've been studying Random Forest classifiers for fun and profit. They have many advantages, work fairly well and are easy to tune. One of the features of a RF classifier is that it is an ensemble of tree-based classifiers, where each tree is learned using a bootstrap sample (with replacement) of the data.</p>
 <p>If we pretend our data is like a big pool of numbered balls, we draw one ball from the pool and copy the number to another ball that we set aside. Now, toss the ball back, mix, pick another ball and repeat. In this scheme you have a chance of drawing the same ball twice (or more). This probability is $ \frac{1}{N}^D $, where D is the number of draws, if the balls are well mixed.</p>
-<p>As I was (reading Leo Brieman's description of the algorithm)[http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm] (which is very readable), I noticed the remark, "About one-third of the cases are left out of the bootstrap sample and not used in the construction of the kth tree". Is that true?</p>
+<p>As I was <a href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">reading Leo Brieman's description of the algorithm</a> (which is very readable), I noticed the remark, "About one-third of the cases are left out of the bootstrap sample and not used in the construction of the kth tree". Is that true?</p>
 <p>If the probability of chosing one sample at random is $1/N$, then the probability that a sample is <em>not</em> chosen is $1-\frac{1}{N}$. For independent draws, the chance that a sample is not chosen twice is </p>
 <p>\begin{aligned}
-(1- \frac{1}{N})(1- \frac{1}{N}) = (1- \frac{1}{N})^2
-\end{aligned}.</p>
+\left(1- \frac{1}{N}\right)\left(1- \frac{1}{N}\right) = \left((1- \frac{1}{N}\right)^2.
+\end{aligned}</p>
 <p>For $D$ independent draws the probably of <em>not</em> chosing that sample is </p>
-<p>$(1- \frac{1}{N})^D$</p>
-<p>Hmmmm ... that looks interesting. Suppose we let $D$ go to $N$, meaning if we have 10 total samples we draw 10 "boostrap samples". What's the probability that we'll miss a sample? (Wolfram|Alpha)[http://www.wolframalpha.com/input/?i=%281-1%2Fn%29%5En] can make this a bit easier. Turns that as we go to a very large dataset, $N\arrow\infinity$ this converges to something specific:</p>
-<p>$\lim_{N\to\infty }(1-\frac{1}{N})^N=\frac{1}{e}\approx 0.36787...$</p>
+<p>\begin{aligned}
+ \left(1- \frac{1}{N}\right)^D
+ \end{aligned}</p>
+<p>Hmmmm ... that looks interesting. Suppose we let $D$ go to $N$, meaning if we have 10 total samples we draw 10 "boostrap samples". What's the probability that we'll miss a sample? <a href="http://www.wolframalpha.com/input/?i=%281-1%2Fn%29%5En">Wolfram|Alpha</a> can make this a bit easier. Turns that as we go to a very large dataset, $N\to\infty$ this converges to something specific:</p>
+<p>\begin{aligned}
+\lim_{N\to\infty }(1-\frac{1}{N})^N=\frac{1}{e}\approx 0.36787...
+ \end{aligned}</p>
 <p>Pretty interesting. This means that the probability a sample <em>will</em> be chosen is $\approx 0.64$, which justifies Brieman's statement that, "About one-third of the cases are left out".</p>
 <p>Pictorally this looks like:</p>
 <p><img alt="bootstrap sample" src="/images/bootstrap_sample.png" /></p>
