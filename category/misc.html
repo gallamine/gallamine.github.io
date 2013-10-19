@@ -54,7 +54,7 @@
 <p>As I was <a href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">reading Leo Brieman's description of the algorithm</a> (which is very readable), I noticed the remark, "About one-third of the cases are left out of the bootstrap sample and not used in the construction of the kth tree". Is that true?</p>
 <p>If the probability of chosing one sample at random is $1/N$, then the probability that a sample is <em>not</em> chosen is $1-\frac{1}{N}$. For independent draws, the chance that a sample is not chosen twice is </p>
 <p>\begin{aligned}
-\left(1- \frac{1}{N}\right)\left(1- \frac{1}{N}\right) = \left((1- \frac{1}{N}\right)^2.
+\left(1- \frac{1}{N}\right)\left(1- \frac{1}{N}\right) = \left(1- \frac{1}{N}\right)^2.
 \end{aligned}</p>
 <p>For $D$ independent draws the probably of <em>not</em> chosing that sample is </p>
 <p>\begin{aligned}
