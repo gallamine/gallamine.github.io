@@ -38,7 +38,165 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/whats-the-chance-an-example-will-be-chosen-from-a-bootstrap-sample.html">What's the Chance an Example will be Chosen from a Bootstrap Sample?</a></h1>
+                    <h1 class="entry-title"><a href="/my-first-d3-visualization.html">My first D3 Visualization</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-10-21T20:51:00">
+                Mon 21 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/william-cox.html">William Cox</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>. </p>
+
+</footer><!-- /.post-info --><p>I've been thinking I should learn D3 for generating interactive visualiations of technical subjects. Here's my first script! It's based on <a href="http://mbostock.github.io/d3/tutorial/bar-2.html">Mike Bostok's great examples</a>.</p>
+<p class="d3_vis"></p>
+
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script>
+
+var t = 1297110663;
+var v = 70;
+var data = d3.range(33).map(next);
+
+function next() {
+    return {
+        time: ++t,
+        value: v = ~~Math.max(10, Math.min(90, v + 10 * (Math.random() - 0.5)))
+    }
+}
+
+setInterval(function() {
+
+    data.shift();
+    data.push(next());
+    redraw();
+
+}, 1500);
+
+var w = 20;
+var h = 80;
+
+var x = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, w]);
+
+var y = d3.scale.linear()
+    .domain([0, 100])
+    .rangeRound([0, h]);
+
+var chart = d3.select(".d3_vis").append("svg")
+    .attr("class","chart")
+    .attr("width", w*data.length-1)
+    .attr("height",h);
+
+chart.selectAll("rect")
+    .data(data)
+    .enter().append("rect")
+    .attr("x", function(d,i) { return x(i) - 0.5; })
+    .attr("y", function(d) { return h - y(d.value) - 0.5; })
+    .attr("width",w)
+    .attr("height", function(d) { return y(d.value);});
+
+chart.append("line")
+    .attr("x1", 0)
+    .attr("x2", w * data.length)
+    .attr("y1", h - 0.5)
+    .attr("y2", h - 0.5)
+    .style("stroke", "#000");
+
+function redraw() {
+
+    chart.selectAll("rect")
+        .data(data)
+        .transition()
+        .duration(500)
+        .attr("y", function(d) { return h - y(d.value) - 0.5; })
+        .attr("height", function(d) { return y(d.value); })
+
+}
+
+</script>
+
+<div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+
+<span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="mi">1297110663</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="mi">70</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="mi">33</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">next</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="o">:</span> <span class="o">++</span><span class="nx">t</span><span class="p">,</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="nx">v</span> <span class="o">=</span> <span class="o">~~</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">data</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+    <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">next</span><span class="p">());</span>
+    <span class="nx">redraw</span><span class="p">();</span>
+
+<span class="p">},</span> <span class="mi">1500</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">scale</span><span class="p">.</span><span class="nx">linear</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">domain</span><span class="p">(</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="cp">]</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span> <span class="nx">w</span><span class="cp">]</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">scale</span><span class="p">.</span><span class="nx">linear</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">domain</span><span class="p">(</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="cp">]</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">rangeRound</span><span class="p">(</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span> <span class="nx">h</span><span class="cp">]</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">chart</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;.d3_vis&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="s2">&quot;chart&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="nx">w</span><span class="o">*</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="nx">h</span><span class="p">);</span>
+
+<span class="nx">chart</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">enter</span><span class="p">().</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">h</span> <span class="o">-</span> <span class="nx">y</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span><span class="nx">w</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">y</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">value</span><span class="p">);});</span>
+
+<span class="nx">chart</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;x2&quot;</span><span class="p">,</span> <span class="nx">w</span> <span class="o">*</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y1&quot;</span><span class="p">,</span> <span class="nx">h</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y2&quot;</span><span class="p">,</span> <span class="nx">h</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;stroke&quot;</span><span class="p">,</span> <span class="s2">&quot;#000&quot;</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">redraw</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">chart</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">transition</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">h</span> <span class="o">-</span> <span class="nx">y</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">;</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">y</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">})</span>
+
+<span class="p">}</span>
+
+<span class="nt">&lt;/script&gt;</span>
+</pre></div><p>There are <a href="/my-first-d3-visualization.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/whats-the-chance-an-example-will-be-chosen-from-a-bootstrap-sample.html" rel="bookmark"
+                           title="Permalink to What's the Chance an Example will be Chosen from a Bootstrap Sample?">What's the Chance an Example will be Chosen from a Bootstrap Sample?</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-10-15T20:51:00">
                 Tue 15 October 2013
@@ -49,29 +207,10 @@
         </address>
 <p>In <a href="/category/misc.html">misc</a>. </p>
 
-</footer><!-- /.post-info --><p>I've been studying Random Forest classifiers for fun and profit. They have many advantages, work fairly well and are easy to tune. One of the features of a RF classifier is that it is an ensemble of tree-based classifiers, where each tree is learned using a bootstrap sample (with replacement) of the data.</p>
-<p>If we pretend our data is like a big pool of numbered balls, we draw one ball from the pool and copy the number to another ball that we set aside. Now, toss the ball back, mix, pick another ball and repeat. In this scheme you have a chance of drawing the same ball twice (or more). This probability is $ \frac{1}{N}^D $, where D is the number of draws, if the balls are well mixed.</p>
-<p>As I was <a href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">reading Leo Brieman's description of the algorithm</a> (which is very readable), I noticed the remark, "About one-third of the cases are left out of the bootstrap sample and not used in the construction of the kth tree". Is that true?</p>
-<p>If the probability of chosing one sample at random is $1/N$, then the probability that a sample is <em>not</em> chosen is $1-\frac{1}{N}$. For independent draws, the chance that a sample is not chosen twice is </p>
-<p>\begin{aligned}
-\left(1- \frac{1}{N}\right)\left(1- \frac{1}{N}\right) = \left(1- \frac{1}{N}\right)^2.
-\end{aligned}</p>
-<p>For $D$ independent draws the probably of <em>not</em> chosing that sample is </p>
-<p>\begin{aligned}
- \left(1- \frac{1}{N}\right)^D
- \end{aligned}</p>
-<p>Hmmmm ... that looks interesting. Suppose we let $D$ go to $N$, meaning if we have 10 total samples we draw 10 "boostrap samples". What's the probability that we'll miss a sample? <a href="http://www.wolframalpha.com/input/?i=%281-1%2Fn%29%5En">Wolfram|Alpha</a> can make this a bit easier. Turns that as we go to a very large dataset, $N\to\infty$ this converges to something specific:</p>
-<p>\begin{aligned}
-\lim_{N\to\infty }(1-\frac{1}{N})^N=\frac{1}{e}\approx 0.36787...
- \end{aligned}</p>
-<p>Pretty interesting. This means that the probability a sample <em>will</em> be chosen is $\approx 0.64$, which justifies Brieman's statement that, "About one-third of the cases are left out".</p>
-<p>Pictorally this looks like:</p>
-<p><img alt="bootstrap sample" src="/images/bootstrap_sample.png" /></p><p>There are <a href="/whats-the-chance-an-example-will-be-chosen-from-a-bootstrap-sample.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>I've been studying Random Forest classifiers for fun and profit. They have many advantages, work fairly well and are easy to tune. One of the features of a RF classifier is that it is an ensemble of tree-based classifiers, where each tree is learned using a bootstrap sample (with ...</p>
+                <a class="readmore" href="/whats-the-chance-an-example-will-be-chosen-from-a-bootstrap-sample.html">read more</a>
+<p>There are <a href="/whats-the-chance-an-example-will-be-chosen-from-a-bootstrap-sample.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -274,28 +413,6 @@ Neural Networks</a>. The ...</p>
 <a href="http://www.lib.ncsu.edu/resolver/1840.16/1696">A 1 Mbps Underwater Communication System Using a 405 nm Laser Diode and Photomultiplier Tube ...</a></li></ul>
                 <a class="readmore" href="/about-me.html">read more</a>
 <p>There are <a href="/about-me.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/show-a-colormap-image-of-a-3d-histogram-in-matlab.html" rel="bookmark"
-                           title="Permalink to Show a Colormap Image of a 3D Histogram in MATLAB">Show a Colormap Image of a 3D Histogram in MATLAB</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-01-19T06:12:00">
-                Thu 19 January 2012
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="/author/william-cox.html">William Cox</a>
-        </address>
-<p>In <a href="/category/misc.html">misc</a>. </p>
-
-</footer><!-- /.post-info -->                <p>This 3d histogram function in matlab, “hist3” sometimes makes visualization difficult, especially if you need to remap the axis or want to view the histogram from the top, down. The easy solution is to convert the histogram to a colormapped image. The code below will do this. It takes 2 ...</p>
-                <a class="readmore" href="/show-a-colormap-image-of-a-3d-histogram-in-matlab.html">read more</a>
-<p>There are <a href="/show-a-colormap-image-of-a-3d-histogram-in-matlab.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
