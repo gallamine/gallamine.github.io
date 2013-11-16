@@ -60,7 +60,7 @@ $$ (x_{n-2} - x_{n-1}) - (x_{n-1} - x_{n}) . $$
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This makes sense, because the only time that the term above goes to zero is if the data is in a straight line - no &quot;kinks&quot; in the trendline. In HP filtering this term is squared and in $ \ell_1 $ filtering this term is just the absolute value (the $ l_1 $ norm). HP filtering fits a kind of spline to the data, while the $ \ell_1 $ filtering fits a peicewise linear function (straight lines that join at the knots).</p>
+<p>This makes sense, because the only time that the term above goes to zero is if the data is in a straight line - no &quot;kinks&quot; in the trendline. In HP filtering this term is squared and in $ \ell_1 $ filtering this term is just the absolute value (the $ l_1 $ norm). HP filtering fits a kind of spline to the data, while the $ \ell_1 $ filtering fits a piecewise linear function (straight lines that join at the knots).</p>
 
 <p>The actual cost function looks a bit like this:</p>
 
